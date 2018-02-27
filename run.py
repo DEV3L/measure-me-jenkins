@@ -1,15 +1,15 @@
+from selenium.webdriver.chrome.webdriver import WebDriver as ChromeWebDriver
+
 from app.actions.fetch_build_numbers_for_branch import FetchBuildNumbersForBranch
 from app.actions.fetch_build_output import FetchBuildOutput
 from app.actions.log_into_github import LogIntoGitHub
 from app.actions.log_into_jenkins import LogIntoJenkins
 from app.builders.build_status_builder import BuildStatusBuilder
 from app.clients.browser_client import BrowserClient
-from selenium.webdriver.chrome.webdriver import WebDriver as ChromeWebDriver
 
 
-
-def _run(chrome_webdriver: ChromeWebDriver()):
-    browser_client = BrowserClient(chrome_webdriver)
+def _run(chrome_web_driver: ChromeWebDriver()):
+    browser_client = BrowserClient(chrome_web_driver)
 
     log_into_github = LogIntoGitHub(browser_client)
     log_into_github.execute()
@@ -34,10 +34,10 @@ def _run(chrome_webdriver: ChromeWebDriver()):
         print(build_status)
 
 if __name__ == '__main__':
-    chrome_webdriver = ChromeWebDriver()
+    chrome_web_driver = ChromeWebDriver()
     try:
-        _run(chrome_webdriver)
+        _run(chrome_web_driver)
     except:
-        chrome_webdriver.close()
+        chrome_web_driver.close()
     else:
-        chrome_webdriver.close()
+        chrome_web_driver.close()
