@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from selenium.webdriver.common.by import By
 
 
@@ -7,6 +9,17 @@ def test_get_url(browser_client):
     browser_client.get(expected_url)
 
     browser_client.web_driver.get.assert_called_with(expected_url)
+
+
+@patch('app.clients.browser_client.UrlRetrieverService')
+def test_get_url_calls_service_with_cache_variable(mock_url_retriever_service, browser_client):
+    expected_url = 'some_url'
+
+    browser_client.get(expected_url, should_use_cache=False)
+    mock_url_retriever_service.assert_called_with(browser_client.web_driver, expected_url, should_use_cache=False)
+
+    browser_client.get(expected_url, should_use_cache=True)
+    mock_url_retriever_service.assert_called_with(browser_client.web_driver, expected_url, should_use_cache=True)
 
 
 def test_navigate_link(browser_client):
