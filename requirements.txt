@@ -1,0 +1,5 @@
+selenium
+# build / test
+bandit
+coveralls
+pytest

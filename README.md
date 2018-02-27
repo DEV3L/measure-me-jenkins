@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/DEV3L/measure-me-jenkins.svg?branch=master)](https://travis-ci.org/DEV3L/measure-me-jenkins?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/DEV3L/measure-me-jenkins/badge.svg?branch=master)](https://coveralls.io/github/DEV3L/measure-me-jenkins?branch=master)
+[![Code Climate](https://codeclimate.com/github/DEV3L/measure-me-jenkins/badges/gpa.svg)](https://codeclimate.com/github/DEV3L/measure-me-jenkins)
+
+
 # measure-me-jenkins
 
 Application to extract build health metrics from Jenkins

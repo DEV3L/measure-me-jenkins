@@ -4,13 +4,16 @@ setup(
     name='measure-me-jenkins',
     packages=find_packages(),
     version='0.1',
-    description='A set of scripts to extract build health from Jenkins at OnShift.',
+    description='A set of scripts to extract build health from Jenkins',
     author='Justin Beall',
     author_email='jus.beall@gmail.com',
-    keywords=['dev3l', 'python', 'jenkins',],
+    keywords=['dev3l', 'python', 'selenium', 'jenkins', ],
     install_requires=[
-        'pytest',
         'selenium',
+        # build / test
+        'bandit',
+        'coveralls',
+        'pytest',
     ],
     classifiers=[
         'Environment :: Console',
