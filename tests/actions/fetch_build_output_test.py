@@ -20,5 +20,5 @@ def test_execute(mock_browser_client):
     build_output = fetch_build_output.execute()
 
     assert mock_browser_client.find_element_by_class_name.return_value.text == build_output
-    mock_browser_client.get.assert_called_with(fetch_build_output.console_url)
+    mock_browser_client.get.assert_called_with(fetch_build_output.console_url, should_use_cache=True)
     mock_browser_client.find_element_by_class_name.assert_called_with(console_css_class)
