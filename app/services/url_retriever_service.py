@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from app.services.pickle_service import load_pickle_data, write_pickle_data, serialize
+from app.services.pickle_service import load_pickle_data, write_pickle_data
 from app.transformers import transform_str
 
 cache_dir = './data/pickle/web_pages/'
@@ -21,6 +21,8 @@ class UrlRetrieverService:
         return f'{cache_dir}{self.url_hash}'
 
     def get(self):
+        # deprecated
+
         try:
             web_page = load_pickle_data(self.cache_file_path) if self.should_use_cache else None
         except FileNotFoundError:
@@ -32,4 +34,4 @@ class UrlRetrieverService:
         return web_page
 
     def _write_pickle_data(self, web_page):
-        write_pickle_data(serialize(web_page), self.cache_file_path)
+        write_pickle_data(web_page, self.cache_file_path)

@@ -1,16 +1,13 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from app.services.url_retriever_service import UrlRetrieverService
-
 
 class BrowserClient:
     def __init__(self, web_driver: WebDriver):
         self.web_driver = web_driver
 
-    def get(self, url, *, should_use_cache=False):
-        url_retriever_service = UrlRetrieverService(self.web_driver, url, should_use_cache=should_use_cache)
-        return url_retriever_service.get()
+    def get(self, url):
+        self.web_driver.get(url)
 
     def navigate_link(self, link_text):
         link_element = self.web_driver.find_element_by_link_text(link_text)

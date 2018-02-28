@@ -58,12 +58,10 @@ def test_get_url_not_cached(mock_load_pickle_data, url_retriever_service):
     mock_load_pickle_data.assert_called_with(url_retriever_service.cache_file_path)
 
 
-@patch('app.services.url_retriever_service.serialize')
 @patch('app.services.url_retriever_service.write_pickle_data')
-def test_write_pickle_data(mock_write_pickle_data, mock_serialize, url_retriever_service):
+def test_write_pickle_data(mock_write_pickle_data, url_retriever_service):
     expected_web_page = 'web_page'
 
     url_retriever_service._write_pickle_data(expected_web_page)
 
-    mock_serialize.assert_called_with(expected_web_page)
-    mock_write_pickle_data.assert_called_with(mock_serialize.return_value, url_retriever_service.cache_file_path)
+    mock_write_pickle_data.assert_called_with(expected_web_page, url_retriever_service.cache_file_path)
