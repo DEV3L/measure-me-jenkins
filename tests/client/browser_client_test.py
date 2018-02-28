@@ -53,3 +53,12 @@ def test_find_element_by_class_name(browser_client):
 
     browser_client.web_driver.find_element_by_class_name.assert_called_with(expected_class_name)
     assert browser_client.web_driver.find_element_by_class_name.return_value == element
+
+
+def test_find_elements_by_tag_name(browser_client):
+    expected_tag_name = 'tag_name'
+
+    element = browser_client.find_elements_by_tag_name(expected_tag_name)
+
+    browser_client.web_driver.find_elements_by_tag_name.assert_called_with(expected_tag_name)
+    assert browser_client.web_driver.find_elements_by_tag_name.return_value == element

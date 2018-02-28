@@ -21,8 +21,11 @@ class BrowserClient:
         button_element = self.web_driver.find_element_by_name(name)
         button_element.click()
 
+    def find_element_by_class_name(self, class_name):
+        return self.web_driver.find_element_by_class_name(class_name)
+
     def find_elements_by_css_selector(self, css_selector: str):
         return self.web_driver.find_elements(By.CSS_SELECTOR, css_selector)
 
-    def find_element_by_class_name(self, class_name):
-        return self.web_driver.find_element_by_class_name(class_name)
+    def find_elements_by_tag_name(self, tag_name):
+        return self.web_driver.find_elements_by_tag_name(tag_name)
