@@ -17,6 +17,6 @@ class FetchBuildOutput(Action):
         return console_url
 
     def execute(self):
-        self.browser_client.get(self.console_url, should_use_cache=True)
+        self.browser_client.get(self.console_url)
         console_output_text = self.browser_client.find_element_by_class_name(console_css_class).text
         return console_output_text
