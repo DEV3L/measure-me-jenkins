@@ -1,5 +1,7 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from app.transformers import transform_str
+
 cache_dir = './data/pickle/web_pages/'
 
 
@@ -9,5 +11,19 @@ class UrlRetrieverService:
         self.url = url
         self.should_use_cache = should_use_cache
 
+    @property
+    def url_hash(self):
+        return transform_str.sha_str(self.url)
+
+    @property
+    def cache_file_path(self):
+        return f'{cache_dir}{self.url_hash}'
+
     def get(self):
-        return self.web_driver.get(self.url)
+        if not self.should_use_cache:
+            return self.web_driver.get(self.url)
+
+        # try:
+        #     web_page = load_pickle_data()
+        # except FileNotFoundError:
+        #     web_page = self.web_driver.get(self.url)

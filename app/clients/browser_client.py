@@ -8,7 +8,7 @@ class BrowserClient:
     def __init__(self, web_driver: WebDriver):
         self.web_driver = web_driver
 
-    def get(self, url, *, should_use_cache=True):
+    def get(self, url, *, should_use_cache=False):
         url_retriever_service = UrlRetrieverService(self.web_driver, url, should_use_cache=should_use_cache)
         return url_retriever_service.get()
 
