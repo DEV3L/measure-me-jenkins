@@ -4,3 +4,6 @@ class BuildDetailsBuilder:
         self.build_number = build_number
         self.page_headline = page_headline
         self.page_details = page_details
+
+    def build(self):
+        pass

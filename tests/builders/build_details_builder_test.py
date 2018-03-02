@@ -15,6 +15,6 @@ def test_build_details_builder():
 
     build_details_builder = BuildDetailsBuilder(expected_branch_name, expected_build_number,
                                                 expected_page_headline, expected_page_details)
-    # build_details = build_details_builder.build()
-    #
+    build_details = build_details_builder.build()
+
     # assert expected_build_details == build_details
