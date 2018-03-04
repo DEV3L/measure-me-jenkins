@@ -2,6 +2,7 @@ from app.actions._action import Action
 from app.builders.build_details_builder import BuildDetailsBuilder
 from app.clients.browser_client import BrowserClient
 from app.config import jenkins_url
+from app.model.build_details import BuildDetails
 
 base_console_url = f'{jenkins_url}view/OnShift-OnShift/job/OnShift-OnShift/job/'
 
@@ -16,11 +17,11 @@ class FetchBuildDetails(Action):
         self.build_number = build_number
 
     @property
-    def details_url(self):
+    def details_url(self) -> str:
         details_url = f'{base_console_url}{self.branch_name}/{self.build_number}/'
         return details_url
 
-    def execute(self):
+    def execute(self) -> BuildDetails:
         self.browser_client.get(self.details_url)
 
         page_headline = self.browser_client.find_element_by_class_name(page_headline_css).text
