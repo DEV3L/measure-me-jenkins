@@ -9,7 +9,7 @@ def test_build_details_builder():
     expected_page_details = ['', 'commit message (detail / githubweb)', '2 ms waiting in the queue;',
                              '40 min building on an executor;', '40 min total from scheduled to completion.', 'master']
 
-    expected_build_details = BuildDetails(branch_name=expected_branch_name, build_number=1,
+    expected_build_details = BuildDetails(branch_name=expected_branch_name, build_number=expected_build_number,
                                           start_time='Feb 21, 2018 2:45:29 PM', queue_time='2 ms', total_time='40 min',
                                           changes=['commit message'])
 
@@ -17,4 +17,4 @@ def test_build_details_builder():
                                                 expected_page_headline, expected_page_details)
     build_details = build_details_builder.build()
 
-    # assert expected_build_details == build_details
+    assert expected_build_details == build_details
