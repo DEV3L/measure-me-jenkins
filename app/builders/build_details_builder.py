@@ -1,4 +1,5 @@
 from app.model.build_details import BuildDetails
+from app.services.parse_string_time import parse_string_time
 
 
 class BuildDetailsBuilder:
@@ -25,10 +26,16 @@ class BuildDetailsBuilder:
         _page_details = [detail for detail in self.page_details if detail]
         for detail in _page_details:
             if 'total' in detail:
-                build_details.total_time = detail[:detail.index('total') - 1]
+                build_details.total_time = self._extract_time(detail, 'total')
             elif 'waiting' in detail:
-                build_details.queue_time = detail[:detail.index('waiting') - 1]
+                build_details.queue_time = self._extract_time(detail, 'waiting')
             elif '(detail / githubweb)' in detail:
                 changes.append(detail[:detail.index('(detail / githubweb)') - 1])
 
         build_details.changes = changes
+
+    @staticmethod
+    def _extract_time(detail: str, index_keyword: str):
+        time_str = detail[:detail.index(index_keyword) - 1]
+        time = parse_string_time(time_str)
+        return time

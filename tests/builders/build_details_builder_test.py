@@ -10,11 +10,12 @@ def test_build_details_builder():
                              '40 min building on an executor;', '40 min total from scheduled to completion.', 'master']
 
     expected_build_details = BuildDetails(branch_name=expected_branch_name, build_number=expected_build_number,
-                                          start_time='Feb 21, 2018 2:45:29 PM', queue_time='2 ms', total_time='40 min',
+                                          start_time='Feb 21, 2018 2:45:29 PM', queue_time=.002, total_time=2400.0,
                                           changes=['commit message'])
 
     build_details_builder = BuildDetailsBuilder(expected_branch_name, expected_build_number,
                                                 expected_page_headline, expected_page_details)
     build_details = build_details_builder.build()
 
+    assert str(expected_build_details) == str(build_details)
     assert expected_build_details == build_details

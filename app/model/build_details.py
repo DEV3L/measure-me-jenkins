@@ -1,6 +1,6 @@
 class BuildDetails:
     def __init__(self, *, branch_name: str, build_number: int, start_time: str = None,
-                 queue_time: str = None, total_time: str = None, changes: list = None):
+                 queue_time: float = None, total_time: float = None, changes: list = None):
         self.branch_name = branch_name
         self.build_number = build_number
         self.start_time = start_time
