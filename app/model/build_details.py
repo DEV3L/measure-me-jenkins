@@ -9,8 +9,8 @@ class BuildDetails:
         self.changes = changes
 
     def __str__(self):
-        return f'{self.branch_name},{self.build_number},' \
-               f'{self.start_time},{self.queue_time},{self.total_time},{self.changes}'
+        return f'{self.branch_name}|{self.build_number}|' \
+               f'{self.start_time}|{self.queue_time}|{self.total_time}|{self.changes}'
 
     def __eq__(self, other):
         return str(self) == str(other)

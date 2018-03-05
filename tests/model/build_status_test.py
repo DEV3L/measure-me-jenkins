@@ -6,7 +6,7 @@ def test_build_status_init():
     expected_build_number = 1
     expected_status = 'pass'
 
-    expected_build_status_str = 'branch_name,1,pass'
+    expected_build_status_str = 'branch_name|1|pass'
 
     build_status = BuildStatus(
         branch_name=expected_branch_name,

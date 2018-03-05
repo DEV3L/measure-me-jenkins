@@ -5,7 +5,7 @@ class BuildStatus:
         self.status = status
 
     def __str__(self):
-        return f'{self.branch_name},{self.build_number},{self.status}'
+        return f'{self.branch_name}|{self.build_number}|{self.status}'
 
     def __eq__(self, other):
         return str(self) == str(other)
