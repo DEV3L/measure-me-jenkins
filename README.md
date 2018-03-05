@@ -7,6 +7,7 @@
 
 Application to extract build health metrics from Jenkins
 
+
 ## Prerequisites
 * Python3 installed
     * <https://www.python.org/downloads/>
@@ -14,8 +15,25 @@ Application to extract build health metrics from Jenkins
     * <https://virtualenv.pypa.io/en/latest/>
     * sudo pip3 install --upgrade virtualenv virtualenvwrapper
 
+
 # Usage/Setup Instructions
-- TBD
+```bash
+# environment variables
+set GITHUB_USERNAME={github username w/o 2fa}
+set GITHUB_PASSWORD={github password for username}
+
+# clone project
+git clone https://github.com/DEV3L/measure-me-jenkins.git
+cd measure-me-jenkins
+
+# runtime environment
+mkvirtualenv -p /usr/local/bin/python3 measure-me-jenkins
+python setup.py develop
+
+pythun run.py
+
+```
+
 
 ## Contributing
 
